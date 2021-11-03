@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @author -   Nombre autor
+ * @David Reguilón -   Nombre autor
  *  
  */
 public class Envio

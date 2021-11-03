@@ -3,7 +3,7 @@ import java.util.Random;
  *  Un objeto de esta clase guarda los datos de un
  *  paquete
  * 
- * @author - Nombre autor
+ * @David Reguilón - Nombre autor
  *  
  */
 public class Paquete 
@@ -19,7 +19,8 @@ public class Paquete
      */
     public Paquete()    {
         //TODO
-         
+        Dimension dimension = new Dimension(40, 30, 50);
+        this.peso = 8;
 
     }
 
@@ -31,7 +32,10 @@ public class Paquete
      */
     public Paquete(double alto, double ancho, double largo)    {
         //TODO
-
+        this.dimension = new Dimension(alto, ancho, largo);
+        Random generador = new Random();
+        peso = generador.nextDouble() * 6.00 + 2.00;
+        System.out.printf("El peso es %.2f", peso);
     }
 
     /**
@@ -41,6 +45,8 @@ public class Paquete
      */
     public Paquete(Dimension dimension, double peso)    {
         //TODO
+        this.dimension = dimension;
+        this.peso = peso;
 
     }
 
@@ -65,9 +71,8 @@ public class Paquete
      * El volumen = alto x ancho x largo
      */
     public double getVolumen() {
-       //TODO
-       return 0;
-
+        //TODO
+        return dimension.getAlto()*dimension.getAncho()*dimension.getLargo();
     }
 
     /**
@@ -76,8 +81,8 @@ public class Paquete
      */
     public double getPesoVolumetrico() {
         //TODO
-       return 0;
-
+        return getVolumen() / 5000;
+        
     }
 
     /**
@@ -87,19 +92,21 @@ public class Paquete
      */
     public double calcularPesoFacturable() {
         //TODO
-       return 0;
-
+        return Math.max(peso, getPesoVolumetrico());
     }
-
 
     /**
      * Devuelve una copia exacta al objeto actual
      * Se obtienen copias también de los objetos que contenga
-     */
+    
+    /**paquete2.dimension da null**/
     public Paquete clone() {
         //TODO
-       return null;
+        Paquete paquete = new Paquete(dimension, peso);
+        Paquete paquete2 = paquete;
 
+        System.out.println("Paquete numero 2 tiene "+ paquete2.getDimension() + "\n" + "Y pesa: " + paquete2.getPeso());
+        return paquete2;
     }
 
     /**
@@ -108,10 +115,10 @@ public class Paquete
      */
     public String toString() {
         //TODO
-       return null;
+        return null;
 
     }
-    
+
     /**
      * Muestra en pantalla el objeto actual
      * Este método se incluye como método de prueba
@@ -121,6 +128,5 @@ public class Paquete
         System.out.println(this.toString());
     }
 
-    
 
 }

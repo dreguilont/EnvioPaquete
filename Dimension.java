@@ -1,8 +1,7 @@
-
 /**
  *  Representa una dimensión
  *  
- *  @author - Nombre autor
+ *  @David Reguilón - Nombre autor
  */
 public class Dimension  
 {
@@ -56,6 +55,7 @@ public class Dimension
      */
     public Dimension clone() {
         //TODO
+        
         return null;
 
     }
