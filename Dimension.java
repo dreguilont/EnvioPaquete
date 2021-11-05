@@ -1,7 +1,7 @@
 /**
  *  Representa una dimensión
  *  
- *  @David Reguilón - Nombre autor
+ *  @auhtor - DavidReguilon
  */
 public class Dimension  
 {
@@ -46,7 +46,7 @@ public class Dimension
      */
     public double getVolumen() {
        //TODO
-       return 0;
+       return alto * ancho * largo;
 
     }
     
@@ -55,8 +55,8 @@ public class Dimension
      */
     public Dimension clone() {
         //TODO
-        
-        return null;
+        Dimension dim = new Dimension(alto, ancho, largo);
+        return new Dimension(this.alto, this.ancho,this.largo);
 
     }
 
@@ -66,7 +66,9 @@ public class Dimension
      */
     public String toString() {
         //TODO
-        return null;
+        return String.format("%20s%10.2f(cm)\n", "Peso real:", getAlto())+
+        String.format("%20s%10.2f(cm)\n", "Volumen:", getAncho())+
+        String.format("%20s%10.2f(cm)\n", "Peso Volumétrico:", getLargo());
 
     }
 
@@ -78,6 +80,4 @@ public class Dimension
     public void print() {
         System.out.println(this.toString());
     }
-
-    
 }

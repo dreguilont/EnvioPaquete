@@ -3,7 +3,7 @@ import java.util.Random;
  *  Un objeto de esta clase guarda los datos de un
  *  paquete
  * 
- * @David Reguilón - Nombre autor
+ * @author - DavidReguilón
  *  
  */
 public class Paquete 
@@ -11,7 +11,6 @@ public class Paquete
     private Random generador;
     private Dimension dimension;
     private double peso;
-
     /**
      * Constructor 1 sin parámetros
      * Crea el paquete con 40 , 30, 50 de
@@ -21,7 +20,6 @@ public class Paquete
         //TODO
         Dimension dimension = new Dimension(40, 30, 50);
         this.peso = 8;
-
     }
 
     /**
@@ -35,7 +33,6 @@ public class Paquete
         this.dimension = new Dimension(alto, ancho, largo);
         Random generador = new Random();
         peso = generador.nextDouble() * 6.00 + 2.00;
-        System.out.printf("El peso es %.2f", peso);
     }
 
     /**
@@ -98,15 +95,13 @@ public class Paquete
     /**
      * Devuelve una copia exacta al objeto actual
      * Se obtienen copias también de los objetos que contenga
-    
-    /**paquete2.dimension da null**/
+    **/
     public Paquete clone() {
         //TODO
-        Paquete paquete = new Paquete(dimension, peso);
-        Paquete paquete2 = paquete;
-
-        System.out.println("Paquete numero 2 tiene "+ paquete2.getDimension() + "\n" + "Y pesa: " + paquete2.getPeso());
-        return paquete2;
+        Dimension dim = new Dimension(dimension.getAlto(), dimension.getAncho(), dimension.getLargo());
+        double pesoDim = this.peso;
+        Paquete p = new Paquete(dim, pesoDim);
+        return p;
     }
 
     /**
@@ -115,7 +110,10 @@ public class Paquete
      */
     public String toString() {
         //TODO
-        return null;
+        return String.format(dimension.toString()) +
+        String.format("%20s%10.2f(Kg)\n", "Peso real:", calcularPesoFacturable())+
+        String.format("%20s%10.2f(cm3)\n", "Volumen:", getVolumen())+
+        String.format("%20s%10.2f(Kg)\n", "Peso Volumétrico:", getPesoVolumetrico());
 
     }
 
@@ -127,6 +125,4 @@ public class Paquete
     public void print() {
         System.out.println(this.toString());
     }
-
-
 }

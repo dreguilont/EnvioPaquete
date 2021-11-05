@@ -4,7 +4,7 @@
  *  máximo tres
  *  
  * 
- * @David Reguilón -   Nombre autor
+ * @author -   DavidReguilon
  *  
  */
 public class Envio
@@ -56,8 +56,17 @@ public class Envio
      */
     public int getNumeroPaquetes() {
         //TODO
-       return 0;
-
+       int NumeroPaquetes = 0;
+       if(this.getPaquete1() != null){
+           NumeroPaquetes++;
+       }
+       if(this.getPaquete2() != null){
+           NumeroPaquetes++;
+       }
+       if(this.getPaquete3() != null){
+           NumeroPaquetes++;
+       } 
+       return NumeroPaquetes;
     }
 
     /**
@@ -66,8 +75,11 @@ public class Envio
      */
     public boolean isEnvioCompleto() {
        //TODO
-       return false;
-
+       if(getNumeroPaquetes() == 3){
+           return true;
+       }else{
+           return false;
+       }
     }
 
     /**
@@ -79,7 +91,22 @@ public class Envio
      */
     public void addPaquete(Paquete paquete) {
        //TODO
-        
+       if(isEnvioCompleto() == true){
+           System.out.print("No se admiten más paquetes en el envío");
+       }else{
+           if(this.getPaquete1() == null){
+               paquete1 = paquete.clone();
+               getNumeroPaquetes();
+           }
+           if(this.getPaquete2() == null){
+               paquete2 = paquete.clone();
+               getNumeroPaquetes();
+           }
+           if(this.getPaquete3() == null){
+               paquete3 = paquete.clone();
+               getNumeroPaquetes();
+           } 
+       }
 
     }
 
@@ -96,7 +123,11 @@ public class Envio
      */
     public double calcularCosteTotalEnvio() {
         //TODO
-       return 0;
+       double PesoTotal = Math.ceil(paquete1.calcularPesoFacturable()) + 
+       Math.ceil(paquete2.calcularPesoFacturable()) + 
+       Math.ceil(paquete3.calcularPesoFacturable());
+       double PrecioTotal = PesoTotal * PRECIO_KILO;
+       return PrecioTotal;
 
     }
 
@@ -107,7 +138,9 @@ public class Envio
      */
     public String toString() {
        //TODO
-       return null;
+       
+       return "Nº Paquetes: "+ paquete1.toString() + paquete2.toString() + paquete3.toString();
+       
     }
 
     /**
